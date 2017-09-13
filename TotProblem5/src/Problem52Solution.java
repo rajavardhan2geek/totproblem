@@ -58,7 +58,7 @@ public  class Problem52Solution {
 		String ruler =scanner.nextLine();
 		System.out.println("Allies of Ruler?");
 		String allies =scanner.nextLine();
-		fileread("E:\\sfdc\\salesforceprojects\\TotProblem5\\src\\boc-messages.txt");
+		fileread("C:\\Users\\512351\\git\\totproblem\\TotProblem5\\src\\boc-messages.txt");
 		System.out.println("Enter the kingdoms competing to be the ruler:");
 		String name = scanner.nextLine();
 		
