@@ -16,7 +16,7 @@ public class Processmessages  {
 	KingdomMsgProblem problem1;
 	private static int count;
 	private List<String> messages;
-	private List<String> getMessages() {
+	public List<String> getMessages() {
 		return messages;
 	}
 	public void setMessages(List<String> messages) {
@@ -34,28 +34,30 @@ public class Processmessages  {
 	{
 		
 		List<universe> ballotlist =new ArrayList<universe>();
+		List<kingdom> kingdomlistd = kingdomlist.getKingdomlist();
+		List<kingdom> crulers =competentruler.getCompetentrulers();
 		int noofmessages=6;
 		int i=0;
 		while(noofmessages>0)
 		{
-		
-			i=i%competentruler.getCompetentrulers().size();
-			kingdom sendruler=competentruler.getCompetentrulers().get(i);
-			//Collections.shuffle(competentruler.getCompetentrulers());
-			++i;
-			ballotlist.add(new universe(sendruler, sendruler, sendruler.getMessage()));
-					
-			Collections.shuffle(competentruler.getCompetentrulers());
+				kingdom sender =crulers.get(GeneraterandomIndex(crulers.size()));
+			    kingdom receiver = kingdomlistd.get(GeneraterandomIndex(kingdomlistd.size()));
+			   if(sender!=receiver)
+			   {
+			    String msg= messages.get(GeneraterandomIndex(messages.size()));
+			    receiver.setMessage(msg);
+			    ballotlist.add(new universe(sender, receiver, msg));
 				noofmessages--;
+			   }
 		}
 		return ballotlist;
 		
 		
 	}
 	
-	private int GeneraterandomIndex()
+	private int GeneraterandomIndex(int size)
 	{
-		int max=getMessages().size();
+		int max=size;
 		
 		int index = (int) (Math.random()*max);
 	//	System.out.println("max "+max+"index "+index);

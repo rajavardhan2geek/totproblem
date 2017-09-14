@@ -100,7 +100,7 @@ public class SendMessagestoKingdom {
 				System.out.println("round ***************");
 				for(universe univ:ballotrulers)
 				{
-					System.out.println("Sender name"+univ.getSender().getKingdomname()+" count"+univ.getSender().getCount());
+					System.out.println("Sender name"+univ.getSender().getKingdomname()+" count"+univ.getReceiver().getMessage());
 					System.out.println("receiver name"+univ.getReceiver().getKingdomname());
 				}
 		System.out.println("competent rulers***************");
