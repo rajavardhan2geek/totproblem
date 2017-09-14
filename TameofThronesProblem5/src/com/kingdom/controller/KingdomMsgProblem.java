@@ -58,7 +58,7 @@ public class KingdomMsgProblem {
 			
 			}
 			kingdomlist listkingdoms =listofkingdoms;
-			kingdom correct_kingdom=listkingdoms.searchList(sendmsg_kingdoms);
+			kingdom correct_kingdom=listkingdoms.searchList(sendmsg_kingdoms.getKingdomname());
 		   String animal_of_kingdom =correct_kingdom.getAnimal();
 		   processedkingdoms.add(sendmsg_kingdoms);
 		   if(CompareStrings(sendmsg_kingdoms.getMessage().toLowerCase(),animal_of_kingdom.toLowerCase()))

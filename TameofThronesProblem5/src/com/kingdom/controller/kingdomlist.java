@@ -9,6 +9,7 @@ public class kingdomlist {
 
 	private List<kingdom> kingdomlist;
 	
+	
 	public List<kingdom> getKingdomlist() {
 		return kingdomlist;
 	}
@@ -23,16 +24,14 @@ public class kingdomlist {
 		if(!kingdomlist.contains(kingdom))
 			kingdomlist.add(kingdom);
 	}
-	public kingdom searchList(kingdom searchkingdom)
+	public kingdom searchList(String kingdomname)
 	{
 	
 		kingdom fkingdom = null;
 		for(kingdom kking:kingdomlist)
 		{
-			if(kking.getKingdomname().equals(searchkingdom.getKingdomname()))
-				fkingdom= searchkingdom;
-			else
-				fkingdom= null;
+			if(kking.getKingdomname().equalsIgnoreCase(kingdomname))
+							return kking;
 		}
 		return fkingdom;
 		
@@ -41,6 +40,12 @@ public class kingdomlist {
 	public kingdomlist()
 	{
 		kingdomlist= new ArrayList<kingdom>();
+		kingdomlist.add(new kingdom("Air","Owl"));
+		kingdomlist.add(new kingdom("Land","Panda"));
+		kingdomlist.add(new kingdom("Water","Octopus"));
+		kingdomlist.add(new kingdom("Fire","Dragon"));
+		kingdomlist.add(new kingdom("Space","Mammoth"));
+		
 	}
 	
 }
