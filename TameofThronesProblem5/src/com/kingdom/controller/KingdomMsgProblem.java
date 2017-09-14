@@ -29,8 +29,8 @@ public class KingdomMsgProblem {
 	public Boolean CompareStrings(String usr_message,String animal)
 	{
 		
-		TreeMap<Character,Integer> user_msg_char_cnt =GenerateCountforCharacters(usr_message);
-		TreeMap<Character,Integer> animal_char_cnt =GenerateCountforCharacters(animal);
+		TreeMap<Character,Integer> user_msg_char_cnt =GenerateCountforCharacters(usr_message.toLowerCase());
+		TreeMap<Character,Integer> animal_char_cnt =GenerateCountforCharacters(animal.toLowerCase());
 		Set<Character> keysinusermap = user_msg_char_cnt.keySet();
 		Set<Character> keysinanimalmap=animal_char_cnt.keySet();
 	//	System.out.println(user_msg_char_cnt+"char "+animal_char_cnt);

@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
+
+
+
+
 import com.kingdom.controller.KingdomMsgProblem;
 import com.kingdom.controller.competentrulers;
 import com.kingdom.controller.kingdomlist;
@@ -95,18 +101,67 @@ public class SendMessagestoKingdom {
 				}
 				
 				processmsg.setMessages(messages);
-				List<universe> ballotrulers = processmsg.assignmessagesrandomly(kingdomlist, crulers);
-				 
-				System.out.println("round ***************");
-				for(universe univ:ballotrulers)
+				List<universe> ballotrulers = null;
+				int round=0;
+				boolean roundflg=true;
+				int maxcnt=0;
+				while(roundflg)
+					
 				{
-					System.out.println("Sender name"+univ.getSender().getKingdomname()+" count"+univ.getReceiver().getMessage());
-					System.out.println("receiver name"+univ.getReceiver().getKingdomname());
-				}
-		System.out.println("competent rulers***************");
+					ballotrulers = processmsg.assignmessagesrandomly(kingdomlist, crulers);
+					processmsg.checkmessages(ballotrulers);
+					
+				
+				
+				 System.out.println("round ***************"+round);
+				for(kingdom sender:crulers.getCompetentrulers())
+					{
+						int tcnt=sender.getCount();
+						if(tcnt>maxcnt)
+						{
+							maxcnt=tcnt;
+						}
+					}
+						 int tie=0;
+					for(kingdom sender1:crulers.getCompetentrulers())
+						{
+						   
+							int cnt=sender1.getCount();
+							if(cnt==maxcnt)
+							{
+								tie++;
+							}
+						
+						 }
+						if(tie==crulers.getCompetentrulers().size())
+							{
+							roundflg=true;
+							round++;
+							}
+						else
+							roundflg=false;
+					
+						
+						System.out.println("ballot results after round**************"+round);
+						 for(kingdom ckingdom: crulers.getCompetentrulers())
+							System.out.println(ckingdom.getKingdomname()+ "  count "+ckingdom.getCount());	
+						
+					//System.out.println("Sender name"+(univ.getSender()).getKingdomname()+" message"+(univ.getReceiver()).getMessage());
+					//System.out.println("sendercount "+(univ.getSender()).getCount());
+					//System.out.println("receiver name"+(univ.getReceiver()).getKingdomname());
+					}
+				
+				
+		System.out.println("competent rulers**************");
 		for(kingdom ckingdom: crulers.getCompetentrulers())
-			System.out.println(ckingdom.getKingdomname());
+			System.out.println(ckingdom.getKingdomname()+ "  count "+ckingdom.getCount());
 		
+		System.out.println("ruler of southeros**************");
+		for(kingdom ckingdom: crulers.getCompetentrulers())
+		{
+			if(maxcnt == ckingdom.getCount())
+			System.out.println("ruler is"+ckingdom.getKingdomname()+ "  count "+ckingdom.getCount());
+		}
 		
 		/*System.out.println("messages**********************");
 		for(String message : messages)
@@ -114,5 +169,5 @@ public class SendMessagestoKingdom {
 		
 	  }
 	}
-
+  
 }

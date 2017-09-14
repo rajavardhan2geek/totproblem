@@ -45,6 +45,7 @@ public class Processmessages  {
 			   if(sender!=receiver)
 			   {
 			    String msg= messages.get(GeneraterandomIndex(messages.size()));
+			 //   System.out.println(msg+"  "+receiver.getKingdomname());
 			    receiver.setMessage(msg);
 			    ballotlist.add(new universe(sender, receiver, msg));
 				noofmessages--;
@@ -55,12 +56,34 @@ public class Processmessages  {
 		
 	}
 	
+	public void checkmessages(List<universe> listuniverse)
+	{
+		
+		KingdomMsgProblem problem1 = new KingdomMsgProblem();
+		
+		for(universe univ : listuniverse)
+		{
+			kingdom receiver =univ.getReceiver();
+			kingdom sender = univ.getSender();
+			if(problem1.CompareStrings(receiver.getMessage(), receiver.getAnimal()))
+			{
+			//	System.out.println("matches");
+			//	System.out.println(sender.getKingdomname() + "  "+receiver.getKingdomname()+"  "+receiver.getMessage());
+				sender.setCount(sender.getCount()+1);
+				
+			}
+					
+		}
+		
+	}
+	
 	private int GeneraterandomIndex(int size)
 	{
 		int max=size;
 		
 		int index = (int) (Math.random()*max);
-	//	System.out.println("max "+max+"index "+index);
+		if(max==25)
+		System.out.println("max "+max+"index "+index);
 		return index;
 		
 	}
